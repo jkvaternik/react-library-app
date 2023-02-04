@@ -1,0 +1,20 @@
+#add-book-form {
+  padding: 20px;
+  background-color: #9db9db;
+  border: none;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+h5 {
+  padding: 5px;
+  margin: 0px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
