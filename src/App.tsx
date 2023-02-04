@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import BookCard from "./components/Book/BookCard";
@@ -31,6 +32,9 @@ function App() {
   const [library, setLibrary] = useState<Book[]>([]);
 
   useEffect(() => {
+    const books = axios.get('/v1/books/');
+    // once connected to API,
+    // setLibrary(books);
     setLibrary(db);
   }, [library])
 
