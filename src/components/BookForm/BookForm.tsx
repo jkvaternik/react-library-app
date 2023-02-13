@@ -1,17 +1,15 @@
-import { Snackbar } from "@mui/material";
 import axios from "axios";
 import React, { useState } from "react";
 
 import "./BookForm.css";
 
-const BookForm = () => {
+const BookForm = ({ onSubmit } : { onSubmit: () => void }) => {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
 
   const handleSubmit = () => {
-    console.log(process.env.LOCAL_DEV_API);
     axios
-      .post(`${process.env.LOCAL_DEV_API}/v1/addBook`, {
+      .post(`${process.env.REACT_APP_LOCAL_API}/v1/addBook`, {
         title: title,
         author: author,
       })
@@ -23,6 +21,7 @@ const BookForm = () => {
       });
     setTitle("");
     setAuthor("");
+    onSubmit();
   };
 
   return (

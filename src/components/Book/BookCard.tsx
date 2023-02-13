@@ -7,7 +7,7 @@ const BookCard = (props: { book: Book }) => {
   return (
     <Card sx={{ minWidth: '100%' }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+        <Typography sx={{ fontSize: 16 }} color="text.primary" gutterBottom>
           {props.book.title}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">

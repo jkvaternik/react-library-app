@@ -30,14 +30,24 @@ const db: Book[] = [
 
 function App() {
   const [library, setLibrary] = useState<Book[]>([]);
+  const [isRefreshed, setRefresh] = useState<boolean>(false);
 
   useEffect(() => {
-    const books = axios.get('/v1/books/');
-    // once connected to API,
-    // setLibrary(books);
+    const books = getBooks();
     setLibrary(db);
-  }, [library])
 
+    return () => {
+      setRefresh(false);
+    }
+  }, [isRefreshed])
+
+  const handleRefresh = () => {
+    setRefresh(true);
+  }
+
+  const getBooks = async () => {
+    return await axios.get(`${process.env.REACT_APP_LOCAL_API}/v1/books/`);
+  }
   
   const libraryView = library.map((book) => (
     <BookCard key={book.id} book={book} />
@@ -48,7 +58,7 @@ function App() {
       <h1>my library app</h1>
       <div className="grid-container">
         <div className="grid-item">
-          <BookForm />
+          <BookForm onSubmit={() => handleRefresh()}/>
         </div>
         <div className="grid-item library">
           <h3>my books</h3>
