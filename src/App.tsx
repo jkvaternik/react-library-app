@@ -1,8 +1,5 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import BookCard from "./components/Book/BookCard";
-import BookForm from "./components/BookForm/BookForm";
 import { Book } from "./types/LibraryTypes";
 
 const db: Book[] = [
@@ -32,32 +29,22 @@ function App() {
   const [library, setLibrary] = useState<Book[]>([]);
 
   useEffect(() => {
-    const books = axios.get('/v1/books/');
-    // once connected to API,
-    // setLibrary(books);
     setLibrary(db);
-  }, [library])
+  }, [])
 
   
   const libraryView = library.map((book) => (
-    <BookCard key={book.id} book={book} />
+    <span>{book.title}, </span>
   ));
 
   return (
     <section>
-      <h1>my library app</h1>
-      <div className="grid-container">
-        <div className="grid-item">
-          <BookForm />
-        </div>
-        <div className="grid-item library">
-          <h3>my books</h3>
-          <div className="flex-container">
-            {libraryView}
-          </div>
-        </div>
+      <h1>
+        This is my library!
+      </h1>
+      <div>
+        {libraryView}
       </div>
-      <span className="footer">Made for Generate 2023</span>
     </section>
   );
 }
