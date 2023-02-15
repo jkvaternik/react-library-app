@@ -46,7 +46,7 @@ function App() {
   }
 
   const getBooks = async () => {
-    return await axios.get(`${process.env.REACT_APP_LOCAL_API}/v1/books/`);
+    return await axios.get(`${process.env.REACT_APP_LOCAL_API}/v1/books/`).then(data => console.log(data));
   }
   
   const libraryView = library.map((book) => (
